@@ -1,0 +1,187 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>AllanZQY | Mr. Robot</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #0d0d0d;
+      color: #00ffcc;
+      font-family: "Courier New", monospace;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      overflow-x: hidden;
+    }header {
+  background: linear-gradient(to right, #111, #222);
+  padding: 30px 0;
+  border-bottom: 2px solid #00ffcc;
+  text-shadow: 0 0 10px #00ffcc;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin: 0;
+}
+
+nav a {
+  color: #00ffcc;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #ff0055;
+  text-shadow: 0 0 5px #ff0055;
+}
+
+section {
+  padding: 40px 20px;
+  animation: fadeIn 2s ease-in-out;
+}
+
+img {
+  width: 250px;
+  border: 3px solid #00ffcc;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #00ffcc;
+  transition: 0.5s;
+}
+
+img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px #ff0055;
+}
+
+button {
+  background-color: #00ffcc;
+  color: #0d0d0d;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #ff0055;
+  color: white;
+  box-shadow: 0 0 10px #ff0055;
+}
+
+input, textarea {
+  background-color: #111;
+  color: #00ffcc;
+  border: 1px solid #00ffcc;
+  padding: 10px;
+  margin: 10px 0;
+  width: 80%;
+  max-width: 400px;
+  border-radius: 5px;
+}
+
+footer {
+  background-color: #111;
+  color: #666;
+  padding: 20px;
+  font-size: 0.9em;
+  border-top: 1px solid #00ffcc;
+}
+
+.typewriter {
+  overflow: hidden;
+  border-right: .15em solid #00ffcc;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: .1em;
+  animation: typing 4s steps(40, end), blink-caret .75s step-end infinite;
+  max-width: 90%;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #00ffcc; }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+  </style>
+</head>
+<body>  <!-- Música de fundo -->  <audio autoplay loop hidden>
+    <source src="https://files.catbox.moe/6z4q0s.mp3" type="audio/mpeg">
+  </audio>  <!-- Efeito Matrix --><canvas id="matrixCanvas"></canvas>
+
+  <script>
+    const canvas = document.getElementById('matrixCanvas');
+    const ctx = canvas.getContext('2d');
+
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    const letters = "01";
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+    const drops = [];
+
+    for(let x = 0; x < columns; x++) drops[x] = 1;
+
+    function drawMatrix() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "#00ffcc";
+      ctx.font = fontSize + "px monospace";
+
+      for(let i = 0; i < drops.length; i++) {
+        const text = letters[Math.floor(Math.random()*letters.length)];
+        ctx.fillText(text, i*fontSize, drops[i]*fontSize);
+
+        if(drops[i]*fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+        drops[i]++;
+      }
+    }
+
+    setInterval(drawMatrix, 33);
+  </script>  <header>
+    <h1>Bem-vindo ao Sistema do Allan 😎</h1>
+    <div class="typewriter">Explorando códigos, cibersegurança e caos digital...</div>
+    <nav>
+      <a href="#sobre">Sobre</a>
+      <a href="#imagem">Imagem</a>
+      <a href="#botao">Botão</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>  <section id="sobre">
+    <h2>👨‍💻 Sobre o criador</h2>
+    <p>Sou Allan, programador e entusiasta hacker. Aprendendo, testando e hackeando... eticamente.</p>
+  </section>  <section id="imagem">
+    <h2>🖼️ Visual Hacker</h2>
+    <img src="https://i.imgur.com/YpZx9Qf.png" alt="Imagem estilo Mr. Robot" />
+  </section>  <section id="botao">
+    <h2>🧠 Interatividade</h2>
+    <button onclick="alert('Sistema invadido com sucesso by darkarmy😈')">Infiltrar 🔓</button>
+  </section>  <section id="contato">
+    <h2>📡 Contato Simulado</h2>
+    <input type="text" placeholder="Seu nome"><br>
+    <input type="email" placeholder=""><br>
+    <textarea rows="4" placeholder="Sua mensagem secreta..."></textarea
